@@ -128,9 +128,6 @@ client.on(Events.InteractionCreate, async interaction => {
                 break
             }
 
-            console.log(youtubeInfo)
-            console.log(musicPlayer.state.status)
-
             if (musicQueue[0].url == undefined || musicPlayer.state.status != 'playing') {
                 const commands = await interaction.guild.commands.fetch()
                 const playID = commands.toJSON().filter(command => command.name == 'play')[0].id
