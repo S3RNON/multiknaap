@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+
+<body>
+
+    <button id = 'surprise button'>
+        Click on me for cool surrrrrprises!
+    </button>
+    <input id = 'message input'/>
+
+</body>
+
+<script id = 'front end script'>
+
+    const apiRequest = async (json, path) => {
+        const rawResult = await fetch(`/api/${path}`, {
+            method: 'POST',
+            headers: {
+                'Content-Type' : 'application/json;charset=UTF-8',
+            },
+            body: JSON.stringify(json)
+        })
+        const jsonResult  = await rawResult.json()
+        return jsonResult
+    }
+
+    document.getElementById('surprise button').addEventListener('click', async event => {
+        const input = document.getElementById('message input')
+        apiRequest({'message' : input.value}, 'message')
+
+    })
+
+</script>
