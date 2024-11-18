@@ -272,7 +272,27 @@ client.on(Events.InteractionCreate, async interaction => {
             interaction.reply('mauw')
             break
         } catch (error) { console.log(error) }
+        case 'meme': try {
 
+            await fetch("http://192.168.50.130:3001/api/changeData", {
+                method: "POST",
+                mode: "cors",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify((interaction.options.get('image-url') !== null) ? {
+                    top: interaction.options.get('top').value,
+                    bottom: interaction.options.get('bottom').value,
+                    imageURL: interaction.options.get('image-url').value
+                } : {
+                    top: interaction.options.get('top').value,
+                    bottom: interaction.options.get('bottom').value,
+                }
+                )
+            })
+            interaction.reply('Somewhere... A meme has been changed.')
+            break
+        } catch (error) { console.log(error) }
         default:
             return
     }

@@ -49,6 +49,25 @@ class CommandBuilder {
             .setName('resume')
             .setDescription('Resumes the paused music')
             .toJSON(),
+        'meme':
+            new SlashCommandBuilder()
+            .setName('meme')
+            .setDescription('Create your own memes to be shown! (sometimes)')
+            .addStringOption(option => option
+                .setName('top')
+                .setDescription('Top text')
+                .setRequired(true)
+            )
+            .addStringOption(option => option
+                .setName('bottom')
+                .setDescription('Bottom text')
+                .setRequired(true)
+            )
+            .addStringOption(option => option
+                .setName('image-url')
+                .setDescription('Change the image (not required)')
+                .setRequired(false)
+            )
         // 'opt': {
         //     options: [
         //       {
